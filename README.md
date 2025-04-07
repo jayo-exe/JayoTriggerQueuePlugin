@@ -22,10 +22,8 @@ Once you've got your plugin files (either from a DLL file from the store, or fro
 
 ## Usage
 
-This plugin contains an OSC Sender and an OSC Receiver that can connect to VRChat and communicate between VRC and VNyan.
-This is a complete implementation of the VRChat OSC interface documented here: https://docs.vrchat.com/docs/osc-overview .
-Changes to avatar parameters in VRC will be set as VNyan parameters, and will activate a trigger so that your node graph can respond in real time.
-VNyan trigger can also be used to change VRC avatar parameters, drive control inputs, populate the chatbox, and send body-tracking and eye-tracking telemetry!
+The Trigger Queue plugin provides behaviour and control that allows you to assign triggers into different named queues instead of running them right away.
+This can be useful for redeems that viewers might spam, allowing them to be actuvated at a reasonable interval no matter how quickly they come in.
 
 In order to avoid conflict with other plugins or VNyan internals, parameter and trigger names related to this plugin are prefixed with `_jq_` or `_jq:`.
 
@@ -41,7 +39,7 @@ You can use this to do things like spread out spammed redeems over a longer peri
 
 ### Utility Triggers
 
-Thisplugin also provides a few utility triggers to help manage the trigger queues:
+This plugin also provides a few utility triggers to help manage the trigger queues:
 
 #### Next Item in Queue
 
