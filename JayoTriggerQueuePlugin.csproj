@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Label="PluginDirs">
+		<VNyanManagedDir>E:\vNyan\VNyan_Data\Managed\</VNyanManagedDir>
+		<UnityEditorManagedDir>E:\Unity\Editor\2020.3.40f1\Editor\Data\Managed\</UnityEditorManagedDir>
+		<UnityProjectAssetsDir>%USERPROFILE%\VNyanPlugins\Assets\</UnityProjectAssetsDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="JayoTriggerQueuePlugin.vnobj" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy &quot;$(TargetDir)JayoTriggerQueuePlugin.dll&quot; &quot;$(UnityProjectAssetsDir)JayoTriggerQueuePlugin&quot; /Y" />
+		<Exec Command="copy &quot;$(TargetDir)JayoTriggerQueuePlugin.pdb&quot; &quot;$(UnityProjectAssetsDir)JayoTriggerQueuePlugin&quot; /Y" />
+
+		<Exec Command="copy &quot;$(TargetDir)JayoTriggerQueuePlugin.dll&quot; &quot;E:\vNyan\Items\Assemblies&quot; /Y" />
+	</Target>
+
+	<ItemGroup>
+		<Reference Include="Archipelago.MultiClient.Net">
+			<HintPath>..\tunic-randomizer\packages\Archipelago.MultiClient.Net.6.5.0\lib\netstandard2.0\Archipelago.MultiClient.Net.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(VNyanManagedDir)Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(VNyanManagedDir)Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEditor">
+			<HintPath>$(UnityEditorManagedDir)UnityEditor.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(VNyanManagedDir)UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>$(VNyanManagedDir)UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(UnityEditorManagedDir)UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<HintPath>$(UnityEditorManagedDir)UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+			<HintPath>$(VNyanManagedDir)UnityEngine.JSONSerializeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(VNyanManagedDir)UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+			<HintPath>$(UnityEditorManagedDir)UnityEngine\UnityEngine.UIElementsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsNativeModule">
+			<HintPath>$(UnityEditorManagedDir)UnityEngine\UnityEngine.UIElementsNativeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>$(UnityEditorManagedDir)UnityEngine\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="VNyanInterface">
+			<HintPath>$(VNyanManagedDir)VNyanInterface.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>
