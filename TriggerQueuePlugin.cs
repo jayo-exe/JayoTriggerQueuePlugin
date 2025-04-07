@@ -56,11 +56,7 @@ namespace JayoCanvasPlugin
             updater = new Util.PluginUpdater(repoName, currentVersion, updateLink);
             updater.OpenUrlRequested += (url) => Util.MainThreadDispatcher.Enqueue(() => { Application.OpenURL(url); });
 
-            updater.PrepareUpdateUI(
-                window.transform.Find("Panel/UpdateRow/VersionText").gameObject,
-                window.transform.Find("Panel/UpdateRow/UpdateText").gameObject,
-                window.transform.Find("Panel/UpdateRow/UpdateButton").gameObject
-            );
+            
 
             VNyanInterface.VNyanInterface.VNyanTrigger.registerTriggerListener(TriggerQueueTriggerHandler.Instance);
             VNyanInterface.VNyanInterface.VNyanUI.registerPluginButton("Jayo's Trigger Queue", this);
@@ -68,6 +64,12 @@ namespace JayoCanvasPlugin
 
             if (window != null)
             {
+                updater.PrepareUpdateUI(
+                    window.transform.Find("Panel/UpdateRow/VersionText").gameObject,
+                    window.transform.Find("Panel/UpdateRow/UpdateText").gameObject,
+                    window.transform.Find("Panel/UpdateRow/UpdateButton").gameObject
+                );
+
                 window.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
                 window.SetActive(false);
                 window.transform.Find("Panel/TitleBar/CloseButton").GetComponent<Button>().onClick.AddListener(() => { window.SetActive(false); });
